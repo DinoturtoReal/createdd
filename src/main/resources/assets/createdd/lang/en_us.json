@@ -1,0 +1,13 @@
+{
+  "itemGroup.createdd": "Example Mod Tab",
+  "block.createdd.example_block": "Example Block",
+  "item.createdd.example_item": "Example Item",
+
+  "createdd.configuration.title": "Create Dreams and Desires Configs",
+  "createdd.configuration.section.createdd.common.toml": "Create Dreams and Desires Configs",
+  "createdd.configuration.section.createdd.common.toml.title": "Create Dreams and Desires Configs",
+  "createdd.configuration.items": "Item List",
+  "createdd.configuration.logDirtBlock": "Log Dirt Block",
+  "createdd.configuration.magicNumberIntroduction": "Magic Number Text",
+  "createdd.configuration.magicNumber": "Magic Number"
+}
