@@ -2,8 +2,10 @@
   "item.createdd.stargaze_singularity": "Stargaze Singularity",
   "item.createdd.tin_ingot": "Tin Ingot",
   "item.createdd.raw_tin": "Raw Tin",
+  "item.createdd.tin_nugget": "Tin Nugget",
 
   "block.createdd.tin_ore": "Tin Ore",
+  "block.createdd.tin_block": "Tin Block",
 
   "creativetab.createdd.createdd": "Create Dreams 'n Desires"
 }

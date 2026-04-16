@@ -21,7 +21,9 @@ public class CreateDDCreativeTab {
                         output.accept(CreateDDItems.STARGAZE_SINGULARITY);
                         output.accept(CreateDDItems.TIN_INGOT);
                         output.accept(CreateDDItems.RAW_TIN);
+                        output.accept(CreateDDItems.TIN_NUGGET);
                         output.accept(CreateDDBlocks.TIN_ORE);
+                        output.accept(CreateDDBlocks.TIN_BLOCK);
                     })
                     .build());
 
