@@ -1,13 +1,9 @@
 {
-  "itemGroup.createdd": "Example Mod Tab",
-  "block.createdd.example_block": "Example Block",
-  "item.createdd.example_item": "Example Item",
+  "item.createdd.stargaze_singularity": "Stargaze Singularity",
+  "item.createdd.tin_ingot": "Tin Ingot",
+  "item.createdd.raw_tin": "Raw Tin",
 
-  "createdd.configuration.title": "Create Dreams and Desires Configs",
-  "createdd.configuration.section.createdd.common.toml": "Create Dreams and Desires Configs",
-  "createdd.configuration.section.createdd.common.toml.title": "Create Dreams and Desires Configs",
-  "createdd.configuration.items": "Item List",
-  "createdd.configuration.logDirtBlock": "Log Dirt Block",
-  "createdd.configuration.magicNumberIntroduction": "Magic Number Text",
-  "createdd.configuration.magicNumber": "Magic Number"
+  "block.createdd.tin_ore": "Tin Ore",
+
+  "creativetab.createdd.createdd": "Create Dreams 'n Desires"
 }
