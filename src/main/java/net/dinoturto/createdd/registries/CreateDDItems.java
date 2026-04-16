@@ -1,6 +1,7 @@
 package net.dinoturto.createdd.registries;
 
 import net.dinoturto.createdd.CreateDD;
+import net.dinoturto.createdd.item.ChromaticCompound;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -17,6 +18,10 @@ public class CreateDDItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> TIN_NUGGET = ITEMS.register("tin_nugget",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLAZE_BRASS = ITEMS.register("blaze_brass",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CHROMATIC_COMPOUND = ITEMS.register("chromatic_compound",
+            () -> new ChromaticCompound(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
