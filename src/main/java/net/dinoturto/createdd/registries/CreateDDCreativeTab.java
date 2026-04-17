@@ -24,6 +24,8 @@ public class CreateDDCreativeTab {
                         output.accept(CreateDDItems.TIN_NUGGET);
                         output.accept(CreateDDBlocks.TIN_ORE);
                         output.accept(CreateDDBlocks.TIN_BLOCK);
+                        output.accept(CreateDDItems.BLAZE_BRASS);
+                        output.accept(CreateDDItems.CHROMATIC_COMPOUND);
                     })
                     .build());
 

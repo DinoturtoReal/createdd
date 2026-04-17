@@ -1,5 +1,6 @@
 package net.dinoturto.createdd.item;
 
+import net.dinoturto.createdd.CreateDD;
 import net.dinoturto.createdd.registries.CreateDDItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -41,8 +42,10 @@ public class ChromaticCompound extends Item {
         }
         if (heldItem.isEmpty()) {
             player.setItemInHand(hand, filled);
+            System.out.println("gave blaze brass no stack");
             return;
         }
-        player.getInventory().placeItemBackInInventory(filled);
+        player.getInventory().add(filled);
+        System.out.println("gave blaze brass stack");
     }
 }
