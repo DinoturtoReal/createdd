@@ -29,13 +29,18 @@ public class ChromaticCompound extends Item {
 
         Level world = player.level();
 
+        if (world.isClientSide()) {
+            return InteractionResult.FAIL;
+        }
+
         giveBlazeBrass(player, heldItem, hand);
         entity.discard();
-        return InteractionResult.sidedSuccess(world.isClientSide);
+        heldItem.use(world, player, hand);
+        return InteractionResult.SUCCESS;
     }
 
     protected void giveBlazeBrass(Player player, ItemStack heldItem, InteractionHand hand) {
-        ItemStack filled = ItemUtils.createFilledResult(heldItem, player, new ItemStack(CreateDDItems.BLAZE_BRASS.get()));
+        ItemStack filled = ItemUtils.createFilledResult(heldItem, player, CreateDDItems.BLAZE_BRASS.get().getDefaultInstance());
         player.setItemInHand(hand, filled);
         /*ItemStack filled = new ItemStack(CreateDDItems.BLAZE_BRASS.get());
         if (!player.isCreative()) {
