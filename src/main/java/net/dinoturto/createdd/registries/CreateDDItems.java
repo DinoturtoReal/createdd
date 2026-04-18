@@ -2,6 +2,7 @@ package net.dinoturto.createdd.registries;
 
 import net.dinoturto.createdd.CreateDD;
 import net.dinoturto.createdd.item.ChromaticCompound;
+import net.dinoturto.createdd.item.DrinkGeneric;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
@@ -23,6 +24,9 @@ public class CreateDDItems {
             () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> CHROMATIC_COMPOUND = ITEMS.register("chromatic_compound",
             () -> new ChromaticCompound(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> VANILLA_MILKSHAKE = ITEMS.register("vanilla_milkshake",
+            () -> new DrinkGeneric(new Item.Properties().food(CreateDDFoodProperties.VANILLA_MILKSHAKE)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
