@@ -1,7 +1,12 @@
 package net.dinoturto.createdd.item;
 
+import net.createmod.catnip.math.VecHelper;
 import net.dinoturto.createdd.CreateDD;
 import net.dinoturto.createdd.registries.CreateDDItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
@@ -29,32 +35,39 @@ public class ChromaticCompound extends Item {
 
         Level world = player.level();
 
+        spawnCaptureEffects(world, entity.position());
         if (world.isClientSide()) {
             return InteractionResult.FAIL;
         }
 
         giveBlazeBrass(player, heldItem, hand);
         entity.discard();
-        heldItem.use(world, player, hand);
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     protected void giveBlazeBrass(Player player, ItemStack heldItem, InteractionHand hand) {
-        ItemStack filled = ItemUtils.createFilledResult(heldItem, player, CreateDDItems.BLAZE_BRASS.get().getDefaultInstance());
+        ItemStack filled = ItemUtils.createFilledResult(heldItem, player, CreateDDItems.BLAZE_BRASS.get().getDefaultInstance(), false);
         player.setItemInHand(hand, filled);
-        /*ItemStack filled = new ItemStack(CreateDDItems.BLAZE_BRASS.get());
-        if (!player.isCreative()) {
-            heldItem.shrink(1);
-        }
-        if (heldItem.isEmpty()) {
-            int itemIndex = player.getInventory().items.indexOf(heldItem);
-            player.getInventory().removeItem(heldItem);
-            player.getInventory().add(itemIndex, filled);
-            System.out.println("gave blaze brass no stack");
+    }
+
+    private void spawnCaptureEffects(Level world, Vec3 vec) {
+        if (world.isClientSide) {
+            for (int i = 0; i < 40; i++) {
+                Vec3 motion = VecHelper.offsetRandomly(Vec3.ZERO, world.random, .125f);
+                world.addParticle(ParticleTypes.FLAME, vec.x, vec.y, vec.z, motion.x, motion.y, motion.z);
+                world.addParticle(ParticleTypes.SMOKE, vec.x, vec.y, vec.z, motion.x, motion.y, motion.z);
+                world.addParticle(ParticleTypes.LAVA, vec.x, vec.y, vec.z, motion.x, motion.y, motion.z);
+                Vec3 circle = motion.multiply(1, 0, 1)
+                        .normalize()
+                        .scale(.5f);
+                world.addParticle(ParticleTypes.SMOKE, circle.x, vec.y, circle.z, 0, -0.125, 0);
+            }
             return;
         }
-        player.getInventory().add(filled);
-        System.out.println("gave blaze brass stack");
-         */
+
+        BlockPos soundPos = BlockPos.containing(vec);
+        world.playSound(null, soundPos, SoundEvents.BLAZE_HURT, SoundSource.PLAYERS, .25f, .5f);
+        world.playSound(null, soundPos, SoundEvents.BLAZE_DEATH, SoundSource.PLAYERS, .5f, .75f);
+        world.playSound(null, soundPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, .5f, .75f);
     }
 }
